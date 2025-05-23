@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Taskmaster YouTube Playlists</title>
+<link href="https://fonts.googleapis.com/css2?family=Special+Elite&family=Quicksand:wght@300..700&display=swap" rel="stylesheet">
+<style>
+  body {
+    font-family: 'Quicksand', sans-serif;
+    background-color: #f4f0e1; /* Creamy off-white - reminiscent of the letters/tasks */
+    color: #333;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .header {
+    background-color: #b02324; /* Taskmaster Red */
+    color: #fff;
+    padding: 20px;
+    text-align: center;
+    width: 100%;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    border-bottom: 5px solid #ffd700; /* Gold accent */
+  }
+
+  .logo {
+    width: 200px; /* Adjust as needed */
+    height: 100px; /* Adjust as needed */
+    background-color: #ddd; /* Placeholder color */
+    margin: 0 auto 20px auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Special Elite', cursive;
+    font-size: 1.5em;
+    color: #555;
+  }
+
+  h1 {
+    font-family: 'Special Elite', cursive;
+    font-size: 3em;
+    margin: 0;
+    color: #fff; /* White text on red background */
+  }
+
+  .tab-container {
+    width: 90%;
+    max-width: 1000px;
+    margin-top: 30px;
+    background-color: #fff;
+    box-shadow: 0 0 15px rgba(0,0,0,0.1);
+    border-radius: 8px;
+    overflow: hidden;
+  }
+
+  .tab-buttons {
+    display: flex;
+    flex-wrap: wrap; /* Allow tabs to wrap on smaller screens */
+    background-color: #4a4a4a; /* Dark Grey - for contrast */
+  }
+
+  .tab-button {
+    padding: 15px 15px;
+    cursor: pointer;
+    border: none;
+    background-color: #4a4a4a; /* Dark Grey */
+    color: #f4f0e1; /* Creamy off-white text */
+    font-family: 'Special Elite', cursive;
+    font-size: 1em;
+    outline: none;
+    transition: background-color 0.3s, color 0.3s;
+    flex-grow: 1; /* Make buttons share space */
+    text-align: center;
+  }
+
+  .tab-button:hover {
+    background-color: #b02324; /* Taskmaster Red on hover */
+    color: #fff;
+  }
+
+  .tab-button.active {
+    background-color: #ffd700; /* Gold for active tab */
+    color: #333; /* Dark text for contrast on gold */
+    border-bottom: 3px solid #b02324; /* Red underline for active tab */
+  }
+
+  .tab-content {
+    display: none;
+    padding: 20px;
+    border-top: 1px solid #ddd;
+  }
+
+  .tab-content.active {
+    display: block;
+  }
+
+  .tab-content h2 {
+    font-family: 'Special Elite', cursive;
+    color: #b02324; /* Taskmaster Red for headings */
+    margin-top: 0;
+  }
+
+  iframe {
+    width: 100%; /* Responsive iframe */
+    max-width: 840px; /* Max width of 3 * 280px or similar aspect ratio */
+    height: 472.5px; /* Maintain 16:9 aspect ratio for 840px width */
+    display: block;
+    margin: 0 auto;
+    border: 3px solid #ffd700; /* Gold border for iframe */
+    border-radius: 4px;
+  }
+
+  /* Responsive adjustments */
+  @media (max-width: 768px) {
+    h1 {
+      font-size: 2.5em;
+    }
+    .tab-button {
+      font-size: 1em;
+      padding: 12px 15px;
+    }
+    iframe {
+        height: calc(90vw * 0.5625); /* 16:9 for 90% of viewport width */
+    }
+  }
+  @media (max-width: 480px) {
+    h1 {
+      font-size: 2em;
+    }
+    .tab-button {
+      font-size: 0.9em;
+      padding: 10px;
+      width: 50%; /* Two tabs per row on very small screens */
+      box-sizing: border-box;
+    }
+    .header {
+        padding: 15px;
+    }
+    .logo {
+        width: 150px;
+        height: 75px;
+        font-size: 1.2em;
+    }
+    .tab-content {
+        padding: 15px;
+    }
+  }
+
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="logo">
+    <img src="https://upload.wikimedia.org/wikipedia/en/9/9c/Taskmaster_logo.jpg" alt="Taskmaster Logo" style="width: 100%; height: auto;">
+  </div>
+  <h1>Taskmaster Playlists</h1>
+</div>
+
+<div class="tab-container">
+  <div class="tab-buttons">
+    <button class="tab-button active" onclick="openSeries(event, 'Series1')">Series 1</button>
+    <button class="tab-button" onclick="openSeries(event, 'Series2')">Series 2</button>
+    <button class="tab-button" onclick="openSeries(event, 'Series3')">Series 3</button>
+    <button class="tab-button" onclick="openSeries(event, 'Series4')">Series 4</button>
+    <button class="tab-button" onclick="openSeries(event, 'Series5')">Series 5</button>
+    <button class="tab-button" onclick="openSeries(event, 'Series6')">Series 6</button>
+    <button class="tab-button" onclick="openSeries(event, 'Series7')">Series 7</button>
+    <button class="tab-button" onclick="openSeries(event, 'Series8')">Series 8</button>
+    <button class="tab-button" onclick="openSeries(event, 'Series9')">Series 9</button>
+    <button class="tab-button" onclick="openSeries(event, 'Series10')">Series 10</button>
+    <button class="tab-button" onclick="openSeries(event, 'Series11')">Series 11</button>
+    <button class="tab-button" onclick="openSeries(event, 'Series12')">Series 12</button>
+    <button class="tab-button" onclick="openSeries(event, 'Series13')">Series 13</button>
+    <button class="tab-button" onclick="openSeries(event, 'Series14')">Series 14</button>
+    <button class="tab-button" onclick="openSeries(event, 'Series15')">Series 15</button>
+    <button class="tab-button" onclick="openSeries(event, 'Series16')">Series 16</button>
+    <button class="tab-button" onclick="openSeries(event, 'Series17')">Series 17</button>
+    <button class="tab-button" onclick="openSeries(event, 'Series18')">Series 18</button>
+  </div>
+
+  <div id="Series1" class="tab-content active">
+    <h2>Series 1</h2>
+    <iframe src="https://www.youtube.com/embed/videoseries?si=XTDCOvRxlR5RHMvy&amp;controls=0&amp;list=PLRWvNQVqAeWLpNL3IpUsGUdbaOiCG026u" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+  </div>
+
+  <div id="Series2" class="tab-content">
+    <h2>Series 2</h2>
+    <iframe src="https://www.youtube.com/embed/videoseries?si=XTDCOvRxlR5RHMvy&amp;controls=0&amp;list=PLRWvNQVqAeWKhJB3PVsxKCtx1SgHQq5ev" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+  </div>
+
+  <div id="Series3" class="tab-content">
+    <h2>Series 3</h2>
+    <iframe src="https://www.youtube.com/embed/videoseries?si=XTDCOvRxlR5RHMvy&amp;controls=0&amp;list=PLRWvNQVqAeWLI5VGzTJF78hLZ7h3tSqEx" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+  </div>
+
+  <div id="Series4" class="tab-content">
+    <h2>Series 4</h2>
+    <iframe src="https://www.youtube.com/embed/videoseries?si=XTDCOvRxlR5RHMvy&amp;controls=0&amp;list=PLRWvNQVqAeWKl5VBUf8gNeGR_9ABi5RHo" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+  </div>
+
+  <div id="Series5" class="tab-content">
+    <h2>Series 5</h2>
+    <iframe src="https://www.youtube.com/embed/videoseries?si=XTDCOvRxlR5RHMvy&amp;controls=0&amp;list=PLRWvNQVqAeWL5JRKdVCRYY0ONc5n0qWLg" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+  </div>
+
+  <div id="Series6" class="tab-content">
+    <h2>Series 6</h2>
+    <iframe src="https://www.youtube.com/embed/videoseries?si=XTDCOvRxlR5RHMvy&amp;controls=0&amp;list=PLRWvNQVqAeWIG09UEJpC22svTFS4jaRD7" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+  </div>
+
+  <div id="Series7" class="tab-content">
+    <h2>Series 7</h2>
+    <iframe src="https://www.youtube.com/embed/videoseries?si=XTDCOvRxlR5RHMvy&amp;controls=0&amp;list=PLRWvNQVqAeWLksz49j1YmlkfgQelECDb0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+  </div>
+
+  <div id="Series8" class="tab-content">
+    <h2>Series 8</h2>
+    <iframe src="https://www.youtube.com/embed/videoseries?si=XTDCOvRxlR5RHMvy&amp;controls=0&amp;list=PLRWvNQVqAeWJSC9O6-3lIreQRe1vu71jz" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+  </div>
+
+  <div id="Series9" class="tab-content">
+    <h2>Series 9</h2>
+    <iframe src="https://www.youtube.com/embed/videoseries?si=XTDCOvRxlR5RHMvy&amp;controls=0&amp;list=PLRWvNQVqAeWLPYrIW3bUWik62khdhk2Ro" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+  </div>
+
+  <div id="Series10" class="tab-content">
+    <h2>Series 10</h2>
+    <iframe src="https://www.youtube.com/embed/videoseries?si=XTDCOvRxlR5RHMvy&amp;controls=0&amp;list=PLRWvNQVqAeWIcz0Ky6pnrKkqsp3MA7o_n" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+  </div>
+
+  <div id="Series11" class="tab-content">
+    <h2>Series 11</h2>
+    <iframe src="https://www.youtube.com/embed/videoseries?si=XTDCOvRxlR5RHMvy&amp;controls=0&amp;list=PLRWvNQVqAeWI4Fpgkl3gMg2Rnx0dZ_s0r" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+  </div>
+
+  <div id="Series12" class="tab-content">
+    <h2>Series 12</h2>
+    <iframe src="https://www.youtube.com/embed/videoseries?si=XTDCOvRxlR5RHMvy&amp;controls=0&amp;list=PLRWvNQVqAeWJarmdncJk0jFhijoqi3PDo" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+  </div>
+
+  <div id="Series13" class="tab-content">
+    <h2>Series 13</h2>
+    <iframe src="https://www.youtube.com/embed/videoseries?si=XTDCOvRxlR5RHMvy&amp;controls=0&amp;list=PLRWvNQVqAeWK3V_ZCxku88FPNg4kXBm85" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+  </div>
+
+  <div id="Series14" class="tab-content">
+    <h2>Series 14</h2>
+    <iframe src="https://www.youtube.com/embed/videoseries?si=XTDCOvRxlR5RHMvy&amp;controls=0&amp;list=PLRWvNQVqAeWIIp9qYiyyZmx42gFXA6dhX" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+  </div>
+
+  <div id="Series15" class="tab-content">
+    <h2>Series 15</h2>
+    <iframe src="https://www.youtube.com/embed/videoseries?si=XTDCOvRxlR5RHMvy&amp;controls=0&amp;list=PLRWvNQVqAeWL4HWbifeLsqLIAvUT6XY0Q" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+  </div>
+
+  <div id="Series16" class="tab-content">
+    <h2>Series 16</h2>
+    <iframe src="https://www.youtube.com/embed/videoseries?si=2TBHcNmWD5OU8U3z&controls=0&amp;&list=PLRWvNQVqAeWIPrNqmPTt5KVp5VD0SRkcd" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+  </div>
+
+   <div id="Series17" class="tab-content">
+    <h2>Series 17</h2>
+    <iframe src="https://www.youtube.com/embed/videoseries?si=2TBHcNmWD5OU8U3z&controls=0&list=PLRWvNQVqAeWL-7a_WW4Z39sNvq12z7mVS" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+  </div>
+
+   <div id="Series18" class="tab-content">
+    <h2>Series 18</h2>
+    <iframe src="https://www.youtube.com/embed/videoseries?si=2TBHcNmWD5OU8U3z&controls=0&list=PLRWvNQVqAeWKFh09pFwBiIMPhYKSrbtlv" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+  </div>
+
+</div>
+
+<script>
+function openSeries(evt, seriesName) {
+  var i, tabcontent, tablinks;
+  tabcontent = document.getElementsByClassName("tab-content");
+  for (i = 0; i < tabcontent.length; i++) {
+    tabcontent[i].style.display = "none";
+  }
+  tablinks = document.getElementsByClassName("tab-button");
+  for (i = 0; i < tablinks.length; i++) {
+    tablinks[i].className = tablinks[i].className.replace(" active", "");
+  }
+  document.getElementById(seriesName).style.display = "block";
+  evt.currentTarget.className += " active";
+}
+
+// Open the first tab by default
+document.addEventListener("DOMContentLoaded", function() {
+    document.getElementsByClassName("tab-button")[0].click();
+});
+</script>
+
+</body>
+</html>
