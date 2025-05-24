@@ -33,7 +33,14 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 1.5em;
+    font-size: 1.5em; /* Fallback for logo text if image fails */
+  }
+
+  .logo img {
+    width: 100%;
+    height: auto;
+    display: block; /* Remove extra space below image */
+    border-radius: 10px; /* Rounded corners for the logo */
   }
 
   h1 {
@@ -71,6 +78,7 @@
     transition: background-color 0.3s, color 0.3s;
     flex-grow: 1; /* Make buttons share space */
     text-align: center;
+    white-space: nowrap; /* Prevent text wrapping inside buttons */
   }
 
   .tab-button:hover {
@@ -79,8 +87,8 @@
   }
 
   .tab-button.active {
-    background-color: #ffd700; /* Gold for active tab */
-    color: #333; /* Dark text for contrast on gold */
+    background-color: #ffd900cc; /* Gold for active tab */
+    color: #000000; /* Dark text for contrast on gold */
     border-bottom: 3px solid #b02324; /* Red underline for active tab */
   }
 
@@ -97,7 +105,19 @@
   .tab-content h2 {
     font-family: 'Special Elite', cursive;
     color: #b02324; /* Taskmaster Red for headings */
-    margin-top: 0;
+    margin-top: 2px;
+    text-align: center; /* Center align the h2 */
+    text-decoration-line: underline;
+  }
+
+  .tab-content h2 a {
+    color: inherit; /* Inherit color from h2 */
+    text-decoration: none; /* Remove underline from link */
+    transition: color 0.3s;
+  }
+
+  .tab-content h2 a:hover {
+    color: #8b0000; /* Slightly darker red on hover for the link */
   }
 
   iframe {
@@ -152,7 +172,7 @@
 
 <div class="header">
   <div class="logo">
-    <img src="https://upload.wikimedia.org/wikipedia/en/9/9c/Taskmaster_logo.jpg" alt="Taskmaster Logo" style="width: 100%; height: auto;">
+    <img src="https://upload.wikimedia.org/wikipedia/en/9/9c/Taskmaster_logo.jpg" alt="Taskmaster Logo" onerror="this.onerror=null;this.src='https://placehold.co/200x100/b02324/ffffff?text=Taskmaster';" style="width: 100%; height: auto;">
   </div>
   <h1>Taskmaster Playlists</h1>
 </div>
@@ -177,96 +197,102 @@
     <button class="tab-button" onclick="openSeries(event, 'Series16')">Series 16</button>
     <button class="tab-button" onclick="openSeries(event, 'Series17')">Series 17</button>
     <button class="tab-button" onclick="openSeries(event, 'Series18')">Series 18</button>
+    <button class="tab-button" onclick="openSeries(event, 'CoC')">Champion of Champions</button>
   </div>
 
   <div id="Series1" class="tab-content active">
-    <h2>Series 1</h2>
-    <iframe src="https://www.youtube.com/embed/videoseries?si=XTDCOvRxlR5RHMvy&amp;controls=0&amp;list=PLRWvNQVqAeWLpNL3IpUsGUdbaOiCG026u" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+    <h2><a href="https://www.youtube.com/playlist?list=PLRWvNQVqAeWLpNL3IpUsGUdbaOiCG026u" target="_blank">Series 1</a></h2>
+    <iframe src="https://www.youtube.com/embed/videoseries?si=XTDCOvRxlR5RHMvy&controls=0&list=PLRWvNQVqAeWLpNL3IpUsGUdbaOiCG026u" title="YouTube video player - Series 1" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
   </div>
 
   <div id="Series2" class="tab-content">
-    <h2>Series 2</h2>
-    <iframe src="https://www.youtube.com/embed/videoseries?si=XTDCOvRxlR5RHMvy&amp;controls=0&amp;list=PLRWvNQVqAeWKhJB3PVsxKCtx1SgHQq5ev" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+    <h2><a href="https://www.youtube.com/playlist?list=PLRWvNQVqAeWKhJB3PVsxKCtx1SgHQq5ev" target="_blank">Series 2</a></h2>
+    <iframe src="https://www.youtube.com/embed/videoseries?si=XTDCOvRxlR5RHMvy&controls=0&list=PLRWvNQVqAeWKhJB3PVsxKCtx1SgHQq5ev" title="YouTube video player - Series 2" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
   </div>
 
   <div id="Series3" class="tab-content">
-    <h2>Series 3</h2>
-    <iframe src="https://www.youtube.com/embed/videoseries?si=XTDCOvRxlR5RHMvy&amp;controls=0&amp;list=PLRWvNQVqAeWLI5VGzTJF78hLZ7h3tSqEx" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+    <h2><a href="https://www.youtube.com/playlist?list=PLRWvNQVqAeWLI5VGzTJF78hLZ7h3tSqEx" target="_blank">Series 3</a></h2>
+    <iframe src="https://www.youtube.com/embed/videoseries?si=XTDCOvRxlR5RHMvy&controls=0&list=PLRWvNQVqAeWLI5VGzTJF78hLZ7h3tSqEx" title="YouTube video player - Series 3" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
   </div>
 
   <div id="Series4" class="tab-content">
-    <h2>Series 4</h2>
-    <iframe src="https://www.youtube.com/embed/videoseries?si=XTDCOvRxlR5RHMvy&amp;controls=0&amp;list=PLRWvNQVqAeWKl5VBUf8gNeGR_9ABi5RHo" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+    <h2><a href="https://www.youtube.com/playlist?list=PLRWvNQVqAeWKl5VBUf8gNeGR_9ABi5RHo" target="_blank">Series 4</a></h2>
+    <iframe src="https://www.youtube.com/embed/videoseries?si=XTDCOvRxlR5RHMvy&controls=0&list=PLRWvNQVqAeWKl5VBUf8gNeGR_9ABi5RHo" title="YouTube video player - Series 4" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
   </div>
 
   <div id="Series5" class="tab-content">
-    <h2>Series 5</h2>
-    <iframe src="https://www.youtube.com/embed/videoseries?si=XTDCOvRxlR5RHMvy&amp;controls=0&amp;list=PLRWvNQVqAeWL5JRKdVCRYY0ONc5n0qWLg" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+    <h2><a href="https://www.youtube.com/playlist?list=PLRWvNQVqAeWL5JRKdVCRYY0ONc5n0qWLg" target="_blank">Series 5</a></h2>
+    <iframe src="https://www.youtube.com/embed/videoseries?si=XTDCOvRxlR5RHMvy&controls=0&list=PLRWvNQVqAeWL5JRKdVCRYY0ONc5n0qWLg" title="YouTube video player - Series 5" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
   </div>
 
   <div id="Series6" class="tab-content">
-    <h2>Series 6</h2>
-    <iframe src="https://www.youtube.com/embed/videoseries?si=XTDCOvRxlR5RHMvy&amp;controls=0&amp;list=PLRWvNQVqAeWIG09UEJpC22svTFS4jaRD7" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+    <h2><a href="https://www.youtube.com/playlist?list=PLRWvNQVqAeWIG09UEJpC22svTFS4jaRD7" target="_blank">Series 6</a></h2>
+    <iframe src="https://www.youtube.com/embed/videoseries?si=XTDCOvRxlR5RHMvy&controls=0&list=PLRWvNQVqAeWIG09UEJpC22svTFS4jaRD7" title="YouTube video player - Series 6" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
   </div>
 
   <div id="Series7" class="tab-content">
-    <h2>Series 7</h2>
-    <iframe src="https://www.youtube.com/embed/videoseries?si=XTDCOvRxlR5RHMvy&amp;controls=0&amp;list=PLRWvNQVqAeWLksz49j1YmlkfgQelECDb0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+    <h2><a href="https://www.youtube.com/playlist?list=PLRWvNQVqAeWLksz49j1YmlkfgQelECDb0" target="_blank">Series 7</a></h2>
+    <iframe src="https://www.youtube.com/embed/videoseries?si=XTDCOvRxlR5RHMvy&controls=0&list=PLRWvNQVqAeWLksz49j1YmlkfgQelECDb0" title="YouTube video player - Series 7" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
   </div>
 
   <div id="Series8" class="tab-content">
-    <h2>Series 8</h2>
-    <iframe src="https://www.youtube.com/embed/videoseries?si=XTDCOvRxlR5RHMvy&amp;controls=0&amp;list=PLRWvNQVqAeWJSC9O6-3lIreQRe1vu71jz" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+    <h2><a href="https://www.youtube.com/playlist?list=PLRWvNQVqAeWJSC9O6-3lIreQRe1vu71jz" target="_blank">Series 8</a></h2>
+    <iframe src="https://www.youtube.com/embed/videoseries?si=XTDCOvRxlR5RHMvy&controls=0&list=PLRWvNQVqAeWJSC9O6-3lIreQRe1vu71jz" title="YouTube video player - Series 8" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
   </div>
 
   <div id="Series9" class="tab-content">
-    <h2>Series 9</h2>
-    <iframe src="https://www.youtube.com/embed/videoseries?si=XTDCOvRxlR5RHMvy&amp;controls=0&amp;list=PLRWvNQVqAeWLPYrIW3bUWik62khdhk2Ro" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+    <h2><a href="https://www.youtube.com/playlist?list=PLRWvNQVqAeWLPYrIW3bUWik62khdhk2Ro" target="_blank">Series 9</a></h2>
+    <iframe src="https://www.youtube.com/embed/videoseries?si=XTDCOvRxlR5RHMvy&controls=0&list=PLRWvNQVqAeWLPYrIW3bUWik62khdhk2Ro" title="YouTube video player - Series 9" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
   </div>
 
   <div id="Series10" class="tab-content">
-    <h2>Series 10</h2>
-    <iframe src="https://www.youtube.com/embed/videoseries?si=XTDCOvRxlR5RHMvy&amp;controls=0&amp;list=PLRWvNQVqAeWIcz0Ky6pnrKkqsp3MA7o_n" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+    <h2><a href="https://www.youtube.com/playlist?list=PLRWvNQVqAeWIcz0Ky6pnrKkqsp3MA7o_n" target="_blank">Series 10</a></h2>
+    <iframe src="https://www.youtube.com/embed/videoseries?si=XTDCOvRxlR5RHMvy&controls=0&list=PLRWvNQVqAeWIcz0Ky6pnrKkqsp3MA7o_n" title="YouTube video player - Series 10" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
   </div>
 
   <div id="Series11" class="tab-content">
-    <h2>Series 11</h2>
-    <iframe src="https://www.youtube.com/embed/videoseries?si=XTDCOvRxlR5RHMvy&amp;controls=0&amp;list=PLRWvNQVqAeWI4Fpgkl3gMg2Rnx0dZ_s0r" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+    <h2><a href="https://www.youtube.com/playlist?list=PLRWvNQVqAeWI4Fpgkl3gMg2Rnx0dZ_s0r" target="_blank">Series 11</a></h2>
+    <iframe src="https://www.youtube.com/embed/videoseries?si=XTDCOvRxlR5RHMvy&controls=0&list=PLRWvNQVqAeWI4Fpgkl3gMg2Rnx0dZ_s0r" title="YouTube video player - Series 11" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
   </div>
 
   <div id="Series12" class="tab-content">
-    <h2>Series 12</h2>
-    <iframe src="https://www.youtube.com/embed/videoseries?si=XTDCOvRxlR5RHMvy&amp;controls=0&amp;list=PLRWvNQVqAeWJarmdncJk0jFhijoqi3PDo" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+    <h2><a href="https://www.youtube.com/playlist?list=PLRWvNQVqAeWJarmdncJk0jFhijoqi3PDo" target="_blank">Series 12</a></h2>
+    <iframe src="https://www.youtube.com/embed/videoseries?si=XTDCOvRxlR5RHMvy&controls=0&list=PLRWvNQVqAeWJarmdncJk0jFhijoqi3PDo" title="YouTube video player - Series 12" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
   </div>
 
   <div id="Series13" class="tab-content">
-    <h2>Series 13</h2>
-    <iframe src="https://www.youtube.com/embed/videoseries?si=XTDCOvRxlR5RHMvy&amp;controls=0&amp;list=PLRWvNQVqAeWK3V_ZCxku88FPNg4kXBm85" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+    <h2><a href="https://www.youtube.com/playlist?list=PLRWvNQVqAeWK3V_ZCxku88FPNg4kXBm85" target="_blank">Series 13</a></h2>
+    <iframe src="https://www.youtube.com/embed/videoseries?si=XTDCOvRxlR5RHMvy&controls=0&list=PLRWvNQVqAeWK3V_ZCxku88FPNg4kXBm85" title="YouTube video player - Series 13" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
   </div>
 
   <div id="Series14" class="tab-content">
-    <h2>Series 14</h2>
-    <iframe src="https://www.youtube.com/embed/videoseries?si=XTDCOvRxlR5RHMvy&amp;controls=0&amp;list=PLRWvNQVqAeWIIp9qYiyyZmx42gFXA6dhX" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+    <h2><a href="https://www.youtube.com/playlist?list=PLRWvNQVqAeWIIp9qYiyyZmx42gFXA6dhX" target="_blank">Series 14</a></h2>
+    <iframe src="https://www.youtube.com/embed/videoseries?si=XTDCOvRxlR5RHMvy&controls=0&list=PLRWvNQVqAeWIIp9qYiyyZmx42gFXA6dhX" title="YouTube video player - Series 14" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
   </div>
 
   <div id="Series15" class="tab-content">
-    <h2>Series 15</h2>
-    <iframe src="https://www.youtube.com/embed/videoseries?si=XTDCOvRxlR5RHMvy&amp;controls=0&amp;list=PLRWvNQVqAeWL4HWbifeLsqLIAvUT6XY0Q" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+    <h2><a href="https://www.youtube.com/playlist?list=PLRWvNQVqAeWL4HWbifeLsqLIAvUT6XY0Q" target="_blank">Series 15</a></h2>
+    <iframe src="https://www.youtube.com/embed/videoseries?si=XTDCOvRxlR5RHMvy&controls=0&list=PLRWvNQVqAeWL4HWbifeLsqLIAvUT6XY0Q" title="YouTube video player - Series 15" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
   </div>
 
   <div id="Series16" class="tab-content">
-    <h2>Series 16</h2>
-    <iframe src="https://www.youtube.com/embed/videoseries?si=2TBHcNmWD5OU8U3z&controls=0&amp;&list=PLRWvNQVqAeWIPrNqmPTt5KVp5VD0SRkcd" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+    <h2><a href="https://www.youtube.com/playlist?list=PLRWvNQVqAeWIPrNqmPTt5KVp5VD0SRkcd" target="_blank">Series 16</a></h2>
+    <iframe src="https://www.youtube.com/embed/videoseries?si=XTDCOvRxlR5RHMvy&controls=0&list=PLRWvNQVqAeWIPrNqmPTt5KVp5VD0SRkcd" title="YouTube video player - Series 16" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
   </div>
 
-   <div id="Series17" class="tab-content">
-    <h2>Series 17</h2>
-    <iframe src="https://www.youtube.com/embed/videoseries?si=2TBHcNmWD5OU8U3z&controls=0&list=PLRWvNQVqAeWL-7a_WW4Z39sNvq12z7mVS" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+  <div id="Series17" class="tab-content">
+    <h2><a href="https://www.youtube.com/playlist?list=PLRWvNQVqAeWL-7a_WW4Z39sNvq12z7mVS" target="_blank">Series 17</a></h2>
+    <iframe src="https://www.youtube.com/embed/videoseries?si=XTDCOvRxlR5RHMvy&controls=0&list=PLRWvNQVqAeWL-7a_WW4Z39sNvq12z7mVS" title="YouTube video player - Series 17" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
   </div>
 
-   <div id="Series18" class="tab-content">
-    <h2>Series 18</h2>
-    <iframe src="https://www.youtube.com/embed/videoseries?si=2TBHcNmWD5OU8U3z&controls=0&list=PLRWvNQVqAeWKFh09pFwBiIMPhYKSrbtlv" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+  <div id="Series18" class="tab-content">
+    <h2><a href="https://www.youtube.com/playlist?list=PLRWvNQVqAeWKFh09pFwBiIMPhYKSrbtlv " target="_blank">Series 18</a></h2>
+    <iframe src="https://www.youtube.com/embed/videoseries?si=XTDCOvRxlR5RHMvy&controls=0&list=PLRWvNQVqAeWKFh09pFwBiIMPhYKSrbtlv" title="YouTube video player - Series 18" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+  </div>
+
+  <div id="CoC" class="tab-content">
+    <h2><a href="https://www.youtube.com/playlist?list=PLRWvNQVqAeWJDyoX67REGvrvpGIWway08" target="_blank">Champion of Champions</a></h2>
+    <iframe src="https://www.youtube.com/embed/videoseries?si=XTDCOvRxlR5RHMvy&controls=0&list=PLRWvNQVqAeWJDyoX67REGvrvpGIWway08" title="YouTube video player - Champion of Champions" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
   </div>
 
 </div>
@@ -286,7 +312,7 @@ function openSeries(evt, seriesName) {
   evt.currentTarget.className += " active";
 }
 
-// Open the first tab by default
+// Open the first tab by default when the page loads
 document.addEventListener("DOMContentLoaded", function() {
     document.getElementsByClassName("tab-button")[0].click();
 });
