@@ -186,6 +186,31 @@
     display: block;
   }
 
+  .footer {
+    background-color: #3a3a3a;
+    color: #e0e0e0;
+    text-align: center;
+    padding: 20px;
+    width: 100%;
+    font-size: 0.9em;
+    border-top: 3px solid #2c2c2c;
+    margin-top: auto;
+  }
+
+  .footer p {
+    margin: 5px 0;
+  }
+
+  .footer a {
+    color: #ffd700;
+    text-decoration: none;
+    transition: color 0.3s ease;
+  }
+
+  .footer a:hover {
+    color: #fff;
+    text-decoration: underline;
+  }
   @keyframes fadeIn {
     from { opacity: 0; }
     to { opacity: 1; }
@@ -304,6 +329,10 @@
     .sub-tab-content-wrapper {
         padding: 15px;
     }
+    .footer {
+        padding: 15px 10px;
+        font-size: 0.8em;
+    }
   }
 </style>
 </head>
@@ -313,7 +342,8 @@
   <div class="logo">
     <img src="https://upload.wikimedia.org/wikipedia/en/9/9c/Taskmaster_logo.jpg" alt="Taskmaster Logo" onerror="this.onerror=null;this.src='https://placehold.co/180x90/b02324/ffffff?text=Taskmaster';">
   </div>
-  <h1>Taskmaster Playlists</h1>
+  <h1><a href="https://www.youtube.com/@Taskmaster/playlists" target="_blank" style="text-decoration: underline dotted; color: inherit;">Taskmaster Playlists</a></h1>
+
 </div>
 
 <div class="main-tab-container">
@@ -322,6 +352,22 @@
   <div id="mainTabContentContainer">
     </div>
 </div>
+
+<footer class="footer">
+  <p><b>Disclaimer:</b> This is an unofficial fan-made page. All Taskmaster content and branding are property of their respective owners.</p>
+  <br>
+  <p>
+    |
+    <a href="https://github.com/n00bcodr/" target="_blank">
+        <svg  height="25" viewBox="0 0 24 24" width="25">
+        <path d="M12 1C5.9225 1 1 5.9225 1 12C1 16.8675 4.14875 20.9787 8.52125 22.4362C9.07125 22.5325 9.2775 22.2025 9.2775 21.9137C9.2775 21.6525 9.26375 20.7862 9.26375 19.865C6.5 20.3737 5.785 19.1912 5.565 18.5725C5.44125 18.2562 4.905 17.28 4.4375 17.0187C4.0525 16.8125 3.5025 16.3037 4.42375 16.29C5.29 16.2762 5.90875 17.0875 6.115 17.4175C7.105 19.0812 8.68625 18.6137 9.31875 18.325C9.415 17.61 9.70375 17.1287 10.02 16.8537C7.5725 16.5787 5.015 15.63 5.015 11.4225C5.015 10.2262 5.44125 9.23625 6.1425 8.46625C6.0325 8.19125 5.6475 7.06375 6.2525 5.55125C6.2525 5.55125 7.17375 5.2625 9.2775 6.67875C10.1575 6.43125 11.0925 6.3075 12.0275 6.3075C12.9625 6.3075 13.8975 6.43125 14.7775 6.67875C16.8813 5.24875 17.8025 5.55125 17.8025 5.55125C18.4075 7.06375 18.0225 8.19125 17.9125 8.46625C18.6138 9.23625 19.04 10.2125 19.04 11.4225C19.04 15.6437 16.4688 16.5787 14.0213 16.8537C14.42 17.1975 14.7638 17.8575 14.7638 18.8887C14.7638 20.36 14.75 21.5425 14.75 21.9137C14.75 22.2025 14.9563 22.5462 15.5063 22.4362C19.8513 20.9787 23 16.8537 23 12C23 5.9225 18.0775 1 12 1Z"></path>
+    </svg>
+    </a>
+    |
+    <a href="https://github.com/n00bcodr/taskmaster-playlists" target="_blank">n00bcodr/taskmaster-playlists</a>
+    |
+  </p>
+</footer>
 
 <script>
 
@@ -345,7 +391,7 @@ const taskmasterData = {
       { id: "S10", name: "Series 10", playlistId: "PLRWvNQVqAeWIcz0Ky6pnrKkqsp3MA7o_n" },
       { id: "S11", name: "Series 11", playlistId: "PLRWvNQVqAeWI4Fpgkl3gMg2Rnx0dZ_s0r" },
       { id: "S12", name: "Series 12", playlistId: "PLRWvNQVqAeWJarmdncJk0jFhijoqi3PDo" },
-      { id: "S13", name: "Series 13", playlistId: "PLRWvNQVqAeWK3V_ZCxku88FPNg4kXBm85" },
+      { id: "S13", name: "Series 13", playlistId: "PLRWvNQVqAeWK4MWpTWZvdVV5wBCDepUhw" },
       { id: "S14", name: "Series 14", playlistId: "PLRWvNQVqAeWIIp9qYiyyZmx42gFXA6dhX" },
       { id: "S15", name: "Series 15", playlistId: "PLRWvNQVqAeWL4HWbifeLsqLIAvUT6XY0Q" },
       { id: "S16", name: "Series 16", playlistId: "PLRWvNQVqAeWIPrNqmPTt5KVp5VD0SRkcd" },
