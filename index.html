@@ -7,6 +7,49 @@
 <link href="https://fonts.googleapis.com/css2?family=Special+Elite&family=Quicksand:wght@300..700&display=swap" rel="stylesheet">
 <link rel="icon" href="https://taskmaster.tv/sites/all/themes/taskmaster/images/letter-seal.png" type="image/png">
 <style>
+  :root {
+    /* Light theme colors */
+    --bg-primary: #f4f0e1;
+    --bg-secondary: #ffffff;
+    --bg-accent: #b02324;
+    --bg-dark: #3a3a3a;
+    --bg-darker: #2c2c2c;
+    --bg-tabs: #555555;
+    --text-primary: #333;
+    --text-secondary: #e8e8e8;
+    --text-inverse: #fff;
+    --text-dark: #000;
+    --text-h1: #fff;
+    --border-primary: #ffd700;
+    --border-secondary: #4f4f4f;
+    --shadow: rgba(0,0,0,0.2);
+    --hover-red: #c0392b;
+    --link-color: #ffd700;
+    --footer-bg: #3a3a3a;
+    --footer-text: #e0e0e0;
+  }
+
+  [data-theme="dark"] {
+    --bg-primary: #1a1a1a;
+    --bg-secondary: #2d2d2d;
+    --bg-accent: #d63031;
+    --bg-dark: #1e1e1e;
+    --bg-darker: #121212;
+    --bg-tabs: #3d3d3d;
+    --text-primary: #e0e0e0;
+    --text-secondary: #b0b0b0;
+    --text-inverse: #cacaca;
+    --text-dark: #000000;
+    --text-h1: #000000;
+    --border-primary: #ffd700;
+    --border-secondary: #555;
+    --shadow: rgba(0,0,0,0.4);
+    --hover-red: #e74c3c;
+    --link-color: #ffd700;
+    --footer-bg: #1e1e1e;
+    --footer-text: #b0b0b0;
+  }
+
   html {
     box-sizing: border-box;
     scroll-behavior: smooth;
@@ -16,24 +59,45 @@
   }
   body {
     font-family: 'Quicksand', sans-serif;
-    background-color: #f4f0e1;
-    color: #333;
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
     margin: 0;
     padding: 0;
     display: flex;
     flex-direction: column;
     align-items: center;
     min-height: 100vh;
+    transition: background-color 0.3s ease, color 0.3s ease;
   }
   .header {
-    background-color: #b02324;
-    color: #fff;
+    background-color: var(--bg-accent);
+    color: var(--text-inverse);
     padding: 20px;
     text-align: center;
     width: 100%;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-    border-bottom: 5px solid #ffd700;
+    box-shadow: 0 4px 8px var(--shadow);
+    border-bottom: 5px solid var(--border-primary);
     z-index: 10;
+    position: relative;
+  }
+  .theme-toggle {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    background: none;
+    border: 2px solid var(--border-primary);
+    color: var(--text-inverse);
+    padding: 8px 12px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: bold;
+    transition: all 0.3s ease;
+  }
+  .theme-toggle:hover {
+    background-color: var(--border-primary);
+    color: var(--text-dark);
+    transform: scale(1.05);
   }
   .logo {
     width: 180px;
@@ -53,7 +117,7 @@
     font-family: 'Special Elite', cursive;
     font-size: 2.5em;
     margin: 0;
-    color: #fff;
+    color: var(--text-h1);
   }
   .main-tab-container {
     display: flex;
@@ -62,11 +126,12 @@
     max-width: 1200px;
     margin-top: 25px;
     margin-bottom: 25px;
-    background-color: #ffffff;
-    box-shadow: 0 5px 20px rgba(0,0,0,0.15);
+    background-color: var(--bg-secondary);
+    box-shadow: 0 5px 20px var(--shadow);
     border-radius: 10px;
     overflow: hidden;
     min-height: 500px;
+    transition: background-color 0.3s ease;
   }
   .main-tab-buttons {
     display: flex;
@@ -74,36 +139,40 @@
     width: 230px;
     min-width: 200px;
     flex-shrink: 0;
-    background-color: #3a3a3a;
-    border-right: 3px solid #2c2c2c;
+    background-color: var(--bg-dark);
+    border-right: 3px solid var(--bg-darker);
     padding: 15px 0;
+    transition: background-color 0.3s ease;
   }
   .main-tab-button {
     padding: 16px 22px;
     cursor: pointer;
     border: none;
     background-color: transparent;
-    color: #e8e8e8;
+    color: var(--text-secondary);
     font-family: 'Special Elite', cursive;
     font-size: 1.1em;
-    outline: none;
-    transition: background-color 0.3s ease, color 0.3s ease, border-left-color 0.3s ease;
+    outline: 2px solid transparent;
+    transition: background-color 0.3s ease, color 0.3s ease, border-left-color 0.3s ease, outline-color 0.3s ease;
     text-align: left;
     width: 100%;
     border-left: 5px solid transparent;
-    border-bottom: 1px solid #4f4f4f;
+    border-bottom: 1px solid var(--border-secondary);
+  }
+  .main-tab-button:focus {
+    outline-color: var(--border-primary);
   }
   .main-tab-button:last-child {
     border-bottom: none;
   }
   .main-tab-button:hover {
-    background-color: #b02324;
-    color: #fff;
+    background-color: var(--bg-accent);
+    color: var(--text-inverse);
   }
   .main-tab-button.active {
-    background-color: #b02324;
-    color: #fff;
-    border-left-color: #ffd700;
+    background-color: var(--bg-accent);
+    color: var(--text-inverse);
+    border-left-color: var(--border-primary);
     font-weight: bold;
   }
   #mainTabContentContainer {
@@ -124,20 +193,21 @@
   .sub-tab-buttons {
     display: flex;
     flex-wrap: wrap;
-    background-color: #555555;
-    border-bottom: 2px solid #333;
+    background-color: var(--bg-tabs);
+    border-bottom: 2px solid var(--bg-darker);
     padding: 5px 5px 0 5px;
+    transition: background-color 0.3s ease;
   }
   .sub-tab-button {
     padding: 12px 16px;
     cursor: pointer;
     border: none;
     background-color: transparent;
-    color: #fff;
+    color: var(--text-inverse);
     font-family: 'Special Elite', cursive;
     font-size: 1em;
-    outline: none;
-    transition: background-color 0.3s ease, color 0.3s ease, border-bottom-color 0.3s ease;
+    outline: 2px solid transparent;
+    transition: background-color 0.3s ease, color 0.3s ease, border-bottom-color 0.3s ease, outline-color 0.3s ease;
     flex-grow: 1;
     text-align: center;
     white-space: nowrap;
@@ -145,14 +215,17 @@
     margin: 0 2px 5px 2px;
     border-radius: 4px 4px 0 0;
   }
+  .sub-tab-button:focus {
+    outline-color: var(--border-primary);
+  }
   .sub-tab-button:hover {
-    background-color: #c0392b;
-    color: #fff;
+    background-color: var(--hover-red);
+    color: var(--text-inverse);
   }
   .sub-tab-button.active {
-    background-color: #ffd700;
-    color: #000000;
-    border-bottom-color: #b02324;
+    background-color: var(--border-primary);
+    color: var(--text-dark);
+    border-bottom-color: var(--bg-accent);
   }
   .sub-tab-content-wrapper {
     padding: 25px;
@@ -165,25 +238,26 @@
     display: block;
   }
   .footer {
-    background-color: #3a3a3a;
-    color: #e0e0e0;
+    background-color: var(--footer-bg);
+    color: var(--footer-text);
     text-align: center;
     padding: 20px;
     width: 100%;
     font-size: 0.9em;
-    border-top: 3px solid #2c2c2c;
+    border-top: 3px solid var(--bg-darker);
     margin-top: auto;
+    transition: background-color 0.3s ease, color 0.3s ease;
   }
   .footer p {
     margin: 5px 0;
   }
   .footer a {
-    color: #ffd700;
+    color: var(--link-color);
     text-decoration: none;
     transition: color 0.3s ease;
   }
   .footer a:hover {
-    color: #fff;
+    color: var(--text-inverse);
     text-decoration: underline;
   }
   @keyframes fadeIn {
@@ -198,12 +272,12 @@
   }
   .sub-tab-header-container h2 {
     font-family: 'Special Elite', cursive;
-    color: #b02324;
+    color: var(--bg-accent);
     margin: 0;
     padding: 5px 0;
     text-align: left;
     text-decoration: underline;
-    text-decoration-color: #ffd700;
+    text-decoration-color: var(--border-primary);
     text-decoration-thickness: 2px;
     font-size: 1.6em;
     flex-grow: 1;
@@ -238,9 +312,9 @@
     line-height: 0;
   }
   .styled-link:hover {
-    background-color: #b02324;
+    background-color: var(--bg-accent);
     transform: translateY(-2px);
-    box-shadow: 0 3px 7px rgba(0,0,0,0.2);
+    box-shadow: 0 3px 7px var(--shadow);
   }
   .styled-link img {
     height: 20px;
@@ -255,10 +329,33 @@
     height: auto;
     display: block;
     margin: 0 auto 15px auto;
-    border: 4px solid #ffd700;
+    border: 4px solid var(--border-primary);
     border-radius: 8px;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    box-shadow: 0 2px 10px var(--shadow);
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
   }
+  /* Tablet and smaller desktop */
+  @media (max-width: 1024px) {
+    .main-tab-container {
+      width: 98%;
+      margin-top: 20px;
+      margin-bottom: 20px;
+    }
+    .main-tab-buttons {
+      width: 200px;
+      min-width: 180px;
+    }
+    .main-tab-button {
+      font-size: 1.05em;
+      padding: 14px 18px;
+    }
+    .theme-toggle {
+      font-size: 13px;
+      padding: 6px 10px;
+    }
+  }
+
+  /* Mobile landscape and small tablets */
   @media (max-width: 900px) {
     .main-tab-container {
       flex-direction: column;
@@ -275,9 +372,8 @@
       justify-content: center;
       width: 100%;
       border-right: none;
-      border-bottom: 3px solid #2c2c2c;
+      border-bottom: 3px solid var(--bg-darker);
       padding: 5px 0;
-
     }
     .main-tab-button {
       text-align: center;
@@ -290,12 +386,12 @@
       min-width: 120px;
       margin: 3px;
     }
-     .main-tab-button:last-child {
-        border-bottom: 4px solid transparent;
-     }
+    .main-tab-button:last-child {
+      border-bottom: 4px solid transparent;
+    }
     .main-tab-button.active {
       border-left-color: transparent;
-      border-bottom-color: #ffd700;
+      border-bottom-color: var(--border-primary);
     }
     #mainTabContentContainer {
       height: auto;
@@ -304,15 +400,21 @@
     .sub-tab-content-wrapper {
       padding: 20px;
     }
-     .sub-tab-header-container h2 {
-        font-size: 1.4em;
+    .sub-tab-header-container h2 {
+      font-size: 1.4em;
     }
     .styled-link img {
-        height: 18px;
+      height: 18px;
     }
     .styled-link {
-        padding: 5px;
-        margin-left: 6px;
+      padding: 5px;
+      margin-left: 6px;
+    }
+    .theme-toggle {
+      top: 10px;
+      right: 15px;
+      font-size: 12px;
+      padding: 6px 8px;
     }
   }
   @media (max-width: 768px) {
@@ -390,6 +492,7 @@
 <body>
 
 <div class="header">
+  <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle dark/light mode">🌓</button>
   <div class="logo">
     <img src="https://upload.wikimedia.org/wikipedia/en/9/9c/Taskmaster_logo.jpg" alt="Taskmaster Logo" onerror="this.onerror=null;this.src='https://placehold.co/180x90/b02324/ffffff?text=Taskmaster';">
   </div>
@@ -397,7 +500,7 @@
 </div>
 
 <div class="main-tab-container">
-  <div class="main-tab-buttons" id="mainTabButtonsContainer">
+  <div class="main-tab-buttons" id="mainTabButtonsContainer" role="tablist" aria-label="Taskmaster series categories">
   </div>
   <div id="mainTabContentContainer">
   </div>
@@ -420,18 +523,80 @@
 </footer>
 
 <script>
-const playlistLinkBase = "https://www.youtube.com/playlist?list=";
-const playlistEmbedBase = "https://www.youtube.com/embed/videoseries?list=";
-const videoLinkBase = "https://www.youtube.com/watch?v=";
-const videoEmbedBase = "https://www.youtube.com/embed/";
-const wikiLinkBase = "https://taskmaster.fandom.com/wiki/";
-const traktBaseUrl = "https://trakt.tv/shows/";
-const imdbBaseUrl = "https://www.imdb.com/title/";
+// =============================================================================
+// CONFIGURATION - Edit this section to add new series/seasons
+// =============================================================================
+const CONFIG = {
+  urls: {
+    playlistLink: "https://www.youtube.com/playlist?list=",
+    playlistEmbed: "https://www.youtube.com/embed/videoseries?list=",
+    videoLink: "https://www.youtube.com/watch?v=",
+    videoEmbed: "https://www.youtube.com/embed/",
+    wikiBase: "https://taskmaster.fandom.com/wiki/",
+    trakt: "https://trakt.tv/shows/",
+    imdb: "https://www.imdb.com/title/"
+  },
+  icons: {
+    trakt: "https://cdn.jsdelivr.net/gh/selfhst/icons/svg/trakt.svg",
+    imdb: "https://cdn.jsdelivr.net/gh/selfhst/icons/svg/imdb.svg",
+    wiki: "https://static.wikia.nocookie.net/task/images/e/e6/Site-logo.png"
+  }
+};
 
-const traktIconUrl = "https://cdn.jsdelivr.net/gh/selfhst/icons/svg/trakt.svg";
-const imdbIconUrl = "https://cdn.jsdelivr.net/gh/selfhst/icons/svg/imdb.svg";
-const wikiIconUrl = "https://static.wikia.nocookie.net/task/images/e/e6/Site-logo.png";
+// Theme Management
+function initializeTheme() {
+  const savedTheme = localStorage.getItem('taskmaster-theme');
+  const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+  const theme = savedTheme || (systemPrefersDark ? 'dark' : 'light');
 
+  document.documentElement.setAttribute('data-theme', theme);
+}
+
+function toggleTheme() {
+  const currentTheme = document.documentElement.getAttribute('data-theme');
+  const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+
+  document.documentElement.setAttribute('data-theme', newTheme);
+  localStorage.setItem('taskmaster-theme', newTheme);
+}
+
+// Listen for system theme changes
+window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
+  if (!localStorage.getItem('taskmaster-theme')) {
+    document.documentElement.setAttribute('data-theme', e.matches ? 'dark' : 'light');
+  }
+});
+
+const playlistLinkBase = CONFIG.urls.playlistLink;
+const playlistEmbedBase = CONFIG.urls.playlistEmbed;
+const videoLinkBase = CONFIG.urls.videoLink;
+const videoEmbedBase = CONFIG.urls.videoEmbed;
+const wikiLinkBase = CONFIG.urls.wikiBase;
+const traktBaseUrl = CONFIG.urls.trakt;
+const imdbBaseUrl = CONFIG.urls.imdb;
+
+const traktIconUrl = CONFIG.icons.trakt;
+const imdbIconUrl = CONFIG.icons.imdb;
+const wikiIconUrl = CONFIG.icons.wiki;
+
+// =============================================================================
+// TASKMASTER DATA
+// =============================================================================
+//
+// To add a new season/series:
+// 1. Find the correct category below
+// 2. Add a new object to the "series" array with these fields:
+//    - id: unique identifier (e.g., "S21", "AUS4", "NZS6")
+//    - name: display name (e.g., "Series 21", "Series 4")
+//    - playlistId: YouTube playlist ID (for full series)
+//    - videoId: YouTube video ID (for single episodes/specials)
+//    - wikiStub: Taskmaster wiki page name
+//    - imdbPath: IMDB path (optional)
+//    - traktPath: Trakt.tv path (optional)
+//
+// Example new entry:
+// { id: "S21", name: "Series 21", playlistId: "PLAYLIST_ID_HERE", wikiStub: "Series_21", imdbPath: "tt4934214/episodes?season=21", traktPath: "taskmaster/seasons/21" }
+//
 const taskmasterData = {
   "UK": {
     id: "ukSeries",
@@ -480,7 +645,7 @@ const taskmasterData = {
     series: [
       { id: "AUS1", name: "Series 1", playlistId: "PLRWvNQVqAeWKL6Q32D0bx2tUSy2oAcxt5", wikiStub: "Season_1_(AU)", imdbPath: "tt25523050/episodes?season=1", traktPath: "taskmaster-au/seasons/1" },
       { id: "AUS2", name: "Series 2", playlistId: "PLRWvNQVqAeWKOQZs6DjM0RC4nO0gowJ4v", wikiStub: "Season_2_(AU)", imdbPath: "tt25523050/episodes?season=2", traktPath: "taskmaster-au/seasons/2" },
-      { id: "AUS3", name: "Series 3", playlistId: "PLRWvNQVqAeWLl4d9RnEr9yqFPhSigkHbh", wikiStub: "Season_3_(AU)", imdbPath: "tt25523050/episodes?season=3", traktPath: "taskmaster-au/seasons/3"  }
+      { id: "AUS3", name: "Series 3", playlistId: "PLRWvNQVqAeWLl4d9RnEr9yqFPhSigkHbh", wikiStub: "Season_3_(AU)", imdbPath: "tt25523050/episodes?season=3", traktPath: "taskmaster-au/seasons/3" }
     ]
   },
   "Taskmaster NZ": {
@@ -489,9 +654,9 @@ const taskmasterData = {
     series: [
       { id: "NZS1", name: "Series 1", playlistId: "PLRWvNQVqAeWIblg4FtVJMeRgY9ZgvDlFP", wikiStub: "Season_1_(NZ)", imdbPath: "tt13544772/episodes?season=1", traktPath: "taskmaster-nz/seasons/1" },
       { id: "NZS2", name: "Series 2", playlistId: "PLRWvNQVqAeWJhElBrdI41bxF2IB9FFOtL", wikiStub: "Season_2_(NZ)", imdbPath: "tt13544772/episodes?season=2", traktPath: "taskmaster-nz/seasons/2" },
-      { id: "NZS3", name: "Series 3", playlistId: "PLRWvNQVqAeWL65hyIj19F7sxHsUWVAR7v", wikiStub: "Season_3_(NZ)", imdbPath: "tt13544772/episodes?season=3", traktPath: "taskmaster-nz/seasons/3"  },
-      { id: "NZS4", name: "Series 4", playlistId: "PLRWvNQVqAeWJDZChE52W-1toSqwPZnOTr", wikiStub: "Season_4_(NZ)", imdbPath: "tt13544772/episodes?season=4", traktPath: "taskmaster-nz/seasons/4"  },
-      { id: "NZS5", name: "Series 5", playlistId: "PLRWvNQVqAeWIaU95OV6L2hymQnx95R6wT", wikiStub: "Season_5_(NZ)", imdbPath: "tt13544772/episodes?season=5", traktPath: "taskmaster-nz/seasons/5"  }
+      { id: "NZS3", name: "Series 3", playlistId: "PLRWvNQVqAeWL65hyIj19F7sxHsUWVAR7v", wikiStub: "Season_3_(NZ)", imdbPath: "tt13544772/episodes?season=3", traktPath: "taskmaster-nz/seasons/3" },
+      { id: "NZS4", name: "Series 4", playlistId: "PLRWvNQVqAeWJDZChE52W-1toSqwPZnOTr", wikiStub: "Season_4_(NZ)", imdbPath: "tt13544772/episodes?season=4", traktPath: "taskmaster-nz/seasons/4" },
+      { id: "NZS5", name: "Series 5", playlistId: "PLRWvNQVqAeWIaU95OV6L2hymQnx95R6wT", wikiStub: "Season_5_(NZ)", imdbPath: "tt13544772/episodes?season=5", traktPath: "taskmaster-nz/seasons/5" }
     ]
   }
 };
@@ -504,21 +669,26 @@ function openMainTab(evt, mainTabId) {
   for (let i = 0; i < mainContents.length; i++) {
     mainContents[i].style.display = "none";
     mainContents[i].classList.remove("active");
+    mainContents[i].setAttribute('aria-hidden', 'true');
   }
 
   const mainButtons = document.getElementsByClassName("main-tab-button");
   for (let i = 0; i < mainButtons.length; i++) {
     mainButtons[i].classList.remove("active");
+    mainButtons[i].setAttribute('aria-selected', 'false');
   }
 
   const selectedMainContent = document.getElementById(mainTabId);
   if (selectedMainContent) {
     selectedMainContent.style.display = "block";
     selectedMainContent.classList.add("active");
+    selectedMainContent.setAttribute('aria-hidden', 'false');
   }
 
   if (evt && evt.currentTarget) {
     evt.currentTarget.classList.add("active");
+    evt.currentTarget.setAttribute('aria-selected', 'true');
+    evt.currentTarget.focus();
   }
 
   const firstSubTabButton = document.querySelector(`#${mainTabId} .sub-tab-button`);
@@ -533,24 +703,38 @@ function openSubTab(evt, subTabId, mainTabId) {
     for (let i = 0; i < subContents.length; i++) {
         subContents[i].style.display = "none";
         subContents[i].classList.remove("active");
+        subContents[i].setAttribute('aria-hidden', 'true');
     }
 
     const subButtons = document.querySelectorAll(`#${mainTabId} .sub-tab-button`);
     for (let i = 0; i < subButtons.length; i++) {
         subButtons[i].classList.remove("active");
+        subButtons[i].setAttribute('aria-selected', 'false');
     }
 
     const targetSubContent = document.getElementById(subTabId);
     if (targetSubContent) {
         targetSubContent.style.display = "block";
         targetSubContent.classList.add("active");
+        targetSubContent.setAttribute('aria-hidden', 'false');
+
+        // Lazy load iframe when tab becomes active
+        const iframe = targetSubContent.querySelector('iframe[data-src]');
+        if (iframe && iframe.src === "about:blank") {
+            iframe.src = iframe.getAttribute('data-src');
+            iframe.removeAttribute('data-src');
+        }
     }
 
     if (evt && evt.currentTarget) {
         evt.currentTarget.classList.add("active");
+        evt.currentTarget.setAttribute('aria-selected', 'true');
     } else {
         const targetButton = document.querySelector(`#${mainTabId} .sub-tab-button[onclick*="'${subTabId}'"]`);
-        if (targetButton) targetButton.classList.add("active");
+        if (targetButton) {
+            targetButton.classList.add("active");
+            targetButton.setAttribute('aria-selected', 'true');
+        }
     }
 }
 
@@ -564,6 +748,10 @@ function initializeTabs() {
     mainButton.className = 'main-tab-button';
     mainButton.textContent = category.displayName;
     mainButton.onclick = (event) => openMainTab(event, category.id);
+    mainButton.setAttribute('role', 'tab');
+    mainButton.setAttribute('aria-controls', category.id);
+    mainButton.setAttribute('aria-selected', 'false');
+    mainButton.setAttribute('tabindex', firstMainTabId ? '-1' : '0');
     mainTabButtonsContainer.appendChild(mainButton);
 
     if (!firstMainTabId) {
@@ -573,10 +761,15 @@ function initializeTabs() {
     const mainContentDiv = document.createElement('div');
     mainContentDiv.id = category.id;
     mainContentDiv.className = 'main-tab-content';
+    mainContentDiv.setAttribute('role', 'tabpanel');
+    mainContentDiv.setAttribute('aria-labelledby', `tab-${category.id}`);
+    mainContentDiv.setAttribute('aria-hidden', 'true');
     mainTabContentContainer.appendChild(mainContentDiv);
 
     const subTabButtonsDiv = document.createElement('div');
     subTabButtonsDiv.className = 'sub-tab-buttons';
+    subTabButtonsDiv.setAttribute('role', 'tablist');
+    subTabButtonsDiv.setAttribute('aria-label', `${category.displayName} series`);
     mainContentDiv.appendChild(subTabButtonsDiv);
 
     const subTabContentWrapperDiv = document.createElement('div');
@@ -589,11 +782,16 @@ function initializeTabs() {
       const uniqueSubTabContentId = `${category.id}-${seriesItem.id}`;
       subButton.textContent = seriesItem.name;
       subButton.onclick = (event) => openSubTab(event, uniqueSubTabContentId, category.id);
+      subButton.setAttribute('role', 'tab');
+      subButton.setAttribute('aria-controls', uniqueSubTabContentId);
+      subButton.setAttribute('aria-selected', 'false');
       subTabButtonsDiv.appendChild(subButton);
 
       const subContentDiv = document.createElement('div');
       subContentDiv.id = uniqueSubTabContentId;
       subContentDiv.className = 'sub-tab-content';
+      subContentDiv.setAttribute('role', 'tabpanel');
+      subContentDiv.setAttribute('aria-hidden', 'true');
 
       const subTabHeaderContainer = document.createElement('div');
       subTabHeaderContainer.className = 'sub-tab-header-container';
@@ -676,14 +874,19 @@ function initializeTabs() {
       iframe.allow = "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share";
       iframe.referrerPolicy = "strict-origin-when-cross-origin";
       iframe.allowFullscreen = true;
+      iframe.loading = "lazy";
 
+      // Store the actual src for lazy loading
+      let actualSrc = "about:blank";
       if (seriesItem.playlistId) {
-        iframe.src = playlistEmbedBase + seriesItem.playlistId;
+        actualSrc = playlistEmbedBase + seriesItem.playlistId;
       } else if (seriesItem.videoId) {
-        iframe.src = videoEmbedBase + seriesItem.videoId;
-      } else {
-        iframe.src = "about:blank";
+        actualSrc = videoEmbedBase + seriesItem.videoId;
       }
+
+      iframe.setAttribute('data-src', actualSrc);
+      iframe.src = "about:blank"; // Start with blank to improve initial load
+
       subContentDiv.appendChild(iframe);
 
       subTabContentWrapperDiv.appendChild(subContentDiv);
@@ -700,6 +903,7 @@ function initializeTabs() {
 }
 
 document.addEventListener("DOMContentLoaded", function() {
+    initializeTheme();
     initializeTabs();
 });
 </script>
